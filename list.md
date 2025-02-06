@@ -1,18 +1,17 @@
 formula 
 
-c-ares
+bat
 ca-certificates
 chezmoi
 eza
-fd
+fzf
 gettext
 gh
+git
 gmp
 gnupg
 gnutls
-jemalloc
 libassuan
-libev
 libevent
 libgcrypt
 libgit2
@@ -24,9 +23,9 @@ libssh2
 libtasn1
 libunistring
 libusb
+mise
 ncurses
 nettle
-nghttp2
 npth
 openssl@3
 p11-kit
@@ -42,10 +41,18 @@ cask
 
 alt-tab
 appcleaner
+claude
+discord
 excalidrawz
 font-d2coding-nerd-font
 google-chrome
+httpie
 jetbrains-toolbox
+notion
+obsidian
 postman
 raycast
 rectangle
+shottr
+slack
+warp
