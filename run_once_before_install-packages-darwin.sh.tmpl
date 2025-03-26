@@ -1,0 +1,108 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+# Define arrays of packages
+FORMULAE=(
+    awscli
+    bat
+    ca-certificates
+    chezmoi
+    eza
+    fzf
+    gettext
+    gh
+    git
+    grep
+    gum
+    gmp
+    gnupg
+    gnutls
+    libassuan
+    libevent
+    libgcrypt
+    libgit2
+    libgpg-error
+    libidn2
+    libksba
+    libnghttp2
+    libssh2
+    libtasn1
+    libunistring
+    libusb
+    mise
+    ncurses
+    nettle
+    npth
+    openssl@3
+    p11-kit
+    pcre
+    pinentry
+    readline
+    unbound
+    wget
+    zsh
+    zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+CASKS=(
+    arc
+    adguard
+    alt-tab
+    appcleaner
+    cursor
+    claude
+    discord
+    excalidrawz
+    font-d2coding-nerd-font
+    google-chrome
+    hammerspoon
+    httpie
+    jetbrains-toolbox
+    notion
+    obsidian
+    postman
+    raycast
+    rectangle
+    shottr
+    slack
+    xmind
+    warp
+    zoom
+)
+
+# If Homebrew is not installed on the system, it will be installed here
+if test ! $(which brew); then
+   printf '\n\n\e[33mHomebrew not found. \e[0mInstalling Homebrew...'
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+else
+  printf '\n\n\e[0mHomebrew found. Continuing...'
+fi
+
+# If Oh-my-zsh is not installed on the system, it will be installed here
+if [ ! -d ~/.oh-my-zsh ]; then
+  printf '\n\n\e[33mOh-my-zsh not found. \e[0mInstalling Oh-my-zsh...'
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  printf '\n\n\e[0mOh-my-zsh found. Continuing...'
+fi
+
+# Update homebrew packages
+printf '\nInitiating Homebrew update...\n'
+brew tap homebrew/cask-fonts
+brew tap daipeihust/tap
+brew update
+
+printf '\nInstalling packages...\n'
+brew list --formula ${PACKAGES[@]} || brew install ${PACKAGES[@]}
+
+printf '\n\nInstalling cask apps...\n'
+brew list --cask ${CASKS[@]} || brew install --cask ${CASKS[@]}
+
+printf '\n\nRemoving out of date packages...\n'
+brew cleanup
+
+# kakaotalk
+mas install 869223134
+
+{{ end -}}
