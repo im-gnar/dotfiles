@@ -50,7 +50,6 @@ CASKS=(
     adguard
     alt-tab
     appcleaner
-    cursor
     claude
     discord
     excalidrawz
@@ -97,7 +96,7 @@ brew tap daipeihust/tap
 brew update
 
 printf '\nInstalling packages...\n'
-brew list --formula ${PACKAGES[@]} || brew install ${PACKAGES[@]}
+brew list --formula ${FORMULAE[@]} || brew install ${FORMULAE[@]}
 
 printf '\n\nInstalling cask apps...\n'
 brew list --cask ${CASKS[@]} || brew install --cask ${CASKS[@]}
